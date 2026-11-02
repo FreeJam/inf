@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Нейросеть как напарник — мастер-класс для учителей</title>
+<meta name="description" content="Мастер-класс для учителей-предметников: контекстный промпт, задания по любому предмету, проверка ответов ИИ и копилка готовых заданий.">
+<link rel="stylesheet" href="assets/inf.css?v=18">
+<script>
+  try {
+    var t = localStorage.getItem('inf-theme');
+    document.documentElement.setAttribute('data-theme', t ? t : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+  } catch (e) {}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">К содержанию</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html">
+      <b>напарник</b>
+      <span>мастер-класс · 40 минут</span>
+    </a>
+    <nav class="nav-links" aria-label="Разделы">
+      <a href="#program">Программа</a>
+      <a href="#modules">Модули</a>
+      <a href="#formula">Формула</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+    <div class="nav-end">
+      <button class="theme-btn" data-theme-toggle aria-pressed="false" aria-label="Тёмная тема">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M2.4 12h2.2M19.4 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+      </button>
+      <button class="burger" data-menu-toggle aria-expanded="false" aria-label="Меню">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" data-menu>
+  <a href="#program">Программа <span>40 минут</span></a>
+  <a href="#modules">Модули <span>4 инструмента</span></a>
+  <a href="#formula">Формула промпта <span>5 блоков</span></a>
+  <a href="workshop.html">Мастерская <span>гайд</span></a>
+  <a href="simulator.html">Тренажёр <span>конструктор</span></a>
+  <a href="debug-lab.html">Проверка <span>разбор</span></a>
+  <a href="bank-tasks.html">Копилка заданий <span>по предметам</span></a>
+</div>
+
+<main id="main">
+
+  <!-- ==================== ГЕРОЙ: рука пишет записку ==================== -->
+  <header class="hero">
+    <svg class="hero-bg" viewBox="0 0 1440 860" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path class="dash march" d="M236 748C420 688 610 648 770 560S1080 360 1480 320"/>
+      <path class="dash march" d="M520 920C560 780 640 670 760 580"/>
+      <g class="ln-line-art">
+        <path d="M-30 792H72" class="ln-tube-o" stroke-width="22"/>
+        <path d="M-30 792H72" class="ln-tube-f" stroke-width="17"/>
+        <path d="M-30 792H72" class="ln-tube-r" stroke-width="17" stroke-dasharray="1.4 6"/>
+        <rect x="66" y="776" width="56" height="32" rx="16" class="ln-f-card"/>
+        <circle cx="82" cy="792" r="1.8" class="ln-a-ink"/>
+        <circle cx="89" cy="792" r="1.8" class="ln-a-ink"/>
+        <circle cx="96" cy="792" r="1.8" class="ln-a-ink"/>
+        <path d="M122 792C150 792 160 780 166 760" stroke-width="16" class="ln-tube-o"/>
+        <path d="M122 792C150 792 160 780 166 760" stroke-width="12" class="ln-tube-f"/>
+        <g transform="translate(166 756) rotate(-28)">
+          <rect x="-10" y="-8" width="20" height="16" rx="4" class="ln-f-acc"/>
+          <path d="M10 0H62" stroke-width="9"/>
+          <path d="M10 0H62" stroke-width="5.5" stroke="var(--card)"/>
+          <path d="M62 -3.4L72 0L62 3.4Z" class="ln-a-ink"/>
+        </g>
+      </g>
+      <g class="ln-line-art" transform="translate(300 740)">
+        <path d="M-40 70V18C-40 6 -30 0 -18 0H18C30 0 40 6 40 18V70Z" class="ln-f-card"/>
+        <path d="M-38 70V34C-20 40 -2 28 20 34C30 37 36 36 38 35V70Z" class="ln-f-sec" stroke="none"/>
+        <path d="M-40 70V18C-40 6 -30 0 -18 0H18C30 0 40 6 40 18V70"/>
+        <rect x="-16" y="-14" width="32" height="14" rx="2" class="ln-f-acc"/>
+        <rect x="-26" y="42" width="52" height="20" rx="2" class="ln-f-card"/>
+        <path d="M-18 52H18" class="thin"/>
+      </g>
+      <path d="M300 726C300 696 220 710 172 758" class="ln-tube-o" stroke-width="14" fill="none"/>
+      <path d="M300 726C300 696 220 710 172 758" class="ln-tube-f" stroke-width="10" fill="none"/>
+    </svg>
+
+    <div class="wrap hero-in">
+      <div class="hero-copy">
+        <div class="hero-badge"><i></i> Мастер-класс для учителей школы</div>
+        <h1 class="h1">
+          <span>Нейросеть</span>
+          <span>как напарник</span>
+          <span>учителя</span>
+        </h1>
+        <div class="hero-cta">
+          <a class="btn" href="simulator.html">Открыть тренажёр</a>
+          <svg class="nudge ln-line-art" viewBox="0 0 58 34" aria-hidden="true">
+            <path d="M54 28C42 30 22 26 12 12"/>
+            <path d="M8 20L11 10L20 13"/>
+          </svg>
+        </div>
+        <p class="hero-note">Как получать от нейросети готовые задания по своему предмету: пять станций, сорок минут, всё руками — с телефона или школьного ноутбука.</p>
+        <dl class="hero-meta">
+          <div><b>40 минут</b>5 станций</div>
+          <div><b>Все предметы</b>с 1 по 11 класс</div>
+          <div><b>А. Р. Миннегалеев</b>учитель информатики</div>
+        </dl>
+      </div>
+
+      <div class="hero-stage">
+        <svg id="hero-stage" role="img" aria-label="Манипулятор пишет записку на листе: «Коллеги! Один промпт — и задание готово по любому предмету.»"></svg>
+        <p class="sr" id="hero-text">Коллеги! Один промпт — и задание готово. По любому предмету. Мастер-класс · НАПАРНИК</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== ПАСПОРТ ==================== -->
+  <section class="sec" aria-labelledby="passport-h">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Паспорт мастер-класса</p>
+        <h2 class="h2" id="passport-h">Что происходит<br>за эти 40 минут</h2>
+        <p class="lede">Не лекция про ИИ, а мастерская: каждый участник уносит готовый промпт по своему предмету, проверенное задание и приём, который можно применить на следующем уроке.</p>
+      </div>
+
+      <dl class="passport rv">
+        <div><dt>Формат</dt><dd>Мастер-класс, 5 станций</dd></div>
+        <div><dt>Аудитория</dt><dd>Учителя-предметники, 1–11 класс</dd></div>
+        <div><dt>Результат</dt><dd>Промпт + задание в копилке</dd></div>
+        <div><dt>Подготовка</dt><dd>Телефон или ноутбук</dd></div>
+      </dl>
+
+      <div class="grid-3" style="margin-top:28px">
+        <article class="pillar rv">
+          <span class="marker">01</span>
+          <div class="art" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 52h48M14 52V26l18-12 18 12v26"/>
+              <path d="M25 52V38h14v14M8 52l6-3M56 52l-6-3"/>
+              <path d="M32 14V8"/>
+              <circle cx="32" cy="6" r="2"/>
+            </svg>
+          </div>
+          <h3>Контекст вашего предмета</h3>
+          <p>Краеведение и история Ямала, литература, школьный быт — любой знакомый вам материал становится сюжетом задания по вашему предмету.</p>
+        </article>
+
+        <article class="pillar rv">
+          <span class="marker">02</span>
+          <div class="art" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="14" y="18" width="36" height="30" rx="5"/>
+              <path d="M8 26v14M56 26v14"/>
+              <circle cx="25" cy="31" r="3.4"/><circle cx="39" cy="31" r="3.4"/>
+              <path d="M25 42c4 2.6 10 2.6 14 0M32 18V9M26 9h12"/>
+            </svg>
+          </div>
+          <h3>Отечественные ИИ</h3>
+          <p>GigaChat и Алиса AI как рабочий инструмент учителя: условия задач, тесты, критерии проверки и эталонные ответы.</p>
+        </article>
+
+        <article class="pillar rv">
+          <span class="marker">03</span>
+          <div class="art" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="32" cy="34" r="19"/>
+              <path d="M32 23v12l8 5"/>
+              <path d="M20 8l-6 6M44 8l6 6"/>
+              <path d="M32 10v4"/>
+            </svg>
+          </div>
+          <h3>Экономия времени</h3>
+          <p>Один сюжет в трёх уровнях, варианты и критерии проверки — за две минуты вместо вечера за компьютером.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ПРОГРАММА ==================== -->
+  <section class="sec sec-paper" id="program" aria-labelledby="program-h">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Маршрут</p>
+        <h2 class="h2" id="program-h">Пять станций,<br>сорок минут</h2>
+        <p class="lede">Каждая станция заканчивается артефактом: промпт, задание, критерии или разбор. Ничего «на будущее» — всё в работу на ближайшем уроке.</p>
+      </div>
+
+      <div class="route rv">
+        <span class="route-line" aria-hidden="true"></span>
+
+        <article class="step">
+          <span class="step-no" aria-hidden="true">1</span>
+          <div class="step-body">
+            <h3>Промпт с контекстом предмета</h3>
+            <p>Формула запроса из пяти блоков: роль, тема по ФГОС, ваш контекст, требования к заданию, формат вывода.</p>
+            <div class="step-go"><a class="btn-link" href="workshop.html">Мастерская промпта <svg viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 7h15M11 2l5 5-5 5"/></svg></a></div>
+          </div>
+          <span class="step-time">0–10 мин</span>
+        </article>
+
+        <article class="step">
+          <span class="step-no" aria-hidden="true">2</span>
+          <div class="step-body">
+            <h3>Один сюжет — три уровня</h3>
+            <p>Готовим задание по своему предмету и тут же получаем три версии: с опорами, основной и продвинутый.</p>
+            <div class="step-go"><a class="btn-link" href="simulator.html#builder">Собрать в тренажёре <svg viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 7h15M11 2l5 5-5 5"/></svg></a></div>
+          </div>
+          <span class="step-time">10–20 мин</span>
+        </article>
+
+        <article class="step">
+          <span class="step-no" aria-hidden="true">3</span>
+          <div class="step-body">
+            <h3>Проверяем ответ ИИ</h3>
+            <p>Сгенерированное задание с четырьмя ошибками: ищем фактическую, возрастную, терминологическую и «воду» — по фрагментам.</p>
+            <div class="step-go"><a class="btn-link" href="debug-lab.html">Лаборатория проверки <svg viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 7h15M11 2l5 5-5 5"/></svg></a></div>
+          </div>
+          <span class="step-time">20–30 мин</span>
+        </article>
+
+        <article class="step">
+          <span class="step-no" aria-hidden="true">4</span>
+          <div class="step-body">
+            <h3>Копилка заданий</h3>
+            <p>Собираем общую базу: фильтры по предмету и классу, эталонные ответы, критерии. Своё задание добавляется в один клик.</p>
+            <div class="step-go"><a class="btn-link" href="bank-tasks.html">Открыть копилку <svg viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 7h15M11 2l5 5-5 5"/></svg></a></div>
+          </div>
+          <span class="step-time">30–35 мин</span>
+        </article>
+
+        <article class="step">
+          <span class="step-no" aria-hidden="true">5</span>
+          <div class="step-body">
+            <h3>Итог и бонус для информатиков</h3>
+            <p>Собираем, что заберём на урок, отвечаем на вопросы. Для учителей информатики — песочница, где ИИ пишет проверяемое задание с кодом.</p>
+            <div class="step-go"><a class="btn-link" href="simulator.html#sandbox">Песочница Python <svg viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 7h15M11 2l5 5-5 5"/></svg></a></div>
+          </div>
+          <span class="step-time">35–40 мин</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== МОДУЛИ ==================== -->
+  <section class="sec" id="modules" aria-labelledby="modules-h">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Четыре инструмента</p>
+        <h2 class="h2" id="modules-h">Модули мастер-класса</h2>
+        <p class="lede">Наведите или коснитесь карточки — она перевернётся и покажет, что внутри и зачем это на вашем уроке.</p>
+      </div>
+
+      <div class="flips">
+        <a class="flip rv" href="workshop.html">
+          <span class="flip-in">
+            <span class="flip-face">
+              <span class="tag">Станция 1</span>
+              <span class="flip-no">01</span>
+              <span class="flip-art" aria-hidden="true">
+                <svg viewBox="0 0 120 90" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 74h92M20 74V22l40-8 40 8v52"/>
+                  <path d="M38 34h18M38 46h28M38 58h22M74 34h8M74 46h8M74 58h8"/>
+                  <path d="M20 22l40 10 40-10"/>
+                </svg>
+              </span>
+              <h3>Мастерская промпта</h3>
+            </span>
+            <span class="flip-face back">
+              <span class="tag">Внутри</span>
+              <p class="back-text">Формула из пяти блоков, готовые шаблоны и таблица «плохо / хорошо». <span class="hand">копируется в один клик</span></p>
+              <span class="go">Открыть гайд →</span>
+            </span>
+          </span>
+        </a>
+
+        <a class="flip rv" href="simulator.html">
+          <span class="flip-in">
+            <span class="flip-face">
+              <span class="tag">Станции 2 и 5</span>
+              <span class="flip-no">02</span>
+              <span class="flip-art" aria-hidden="true">
+                <svg viewBox="0 0 120 90" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="16" y="14" width="88" height="62" rx="6"/>
+                  <path d="M16 30h88"/>
+                  <path d="M30 44l10 8-10 8M50 60h16"/>
+                  <circle cx="30" cy="22" r="2"/><circle cx="38" cy="22" r="2"/>
+                </svg>
+              </span>
+              <h3>Тренажёр и песочница</h3>
+            </span>
+            <span class="flip-face back">
+              <span class="tag">Внутри</span>
+              <p class="back-text">Конструктор промпта по любому предмету, песочница Python для информатиков и бонусом — живая записка от руки. <span class="hand">всё работает в браузере</span></p>
+              <span class="go">Собрать промпт →</span>
+            </span>
+          </span>
+        </a>
+
+        <a class="flip rv" href="debug-lab.html">
+          <span class="flip-in">
+            <span class="flip-face">
+              <span class="tag">Станция 3</span>
+              <span class="flip-no">03</span>
+              <span class="flip-art" aria-hidden="true">
+                <svg viewBox="0 0 120 90" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="52" cy="42" r="22"/>
+                  <path d="M68 58l20 20"/>
+                  <path d="M43 42h18M52 33v18"/>
+                </svg>
+              </span>
+              <h3>Лаборатория проверки</h3>
+            </span>
+            <span class="flip-face back">
+              <span class="tag">Внутри</span>
+              <p class="back-text">Задание, которое написала нейросеть: разбор по фрагментам, чек-лист проверки и промпт-наставник. <span class="hand">ИИ не даёт готовый ответ</span></p>
+              <span class="go">Разобрать ошибки →</span>
+            </span>
+          </span>
+        </a>
+
+        <a class="flip rv" href="bank-tasks.html">
+          <span class="flip-in">
+            <span class="flip-face">
+              <span class="tag">Станция 4</span>
+              <span class="flip-no">04</span>
+              <span class="flip-art" aria-hidden="true">
+                <svg viewBox="0 0 120 90" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 20h36l12 12v42H20z"/>
+                  <path d="M56 20v12h12"/>
+                  <path d="M30 46h28M30 56h22M30 66h16"/>
+                  <path d="M78 34h22v40H78"/>
+                </svg>
+              </span>
+              <h3>Копилка заданий</h3>
+            </span>
+            <span class="flip-face back">
+              <span class="tag">Внутри</span>
+              <p class="back-text">Задания по всем основным предметам: фильтры, эталонные ответы, критерии. <span class="hand">своё задание — в копилку</span></p>
+              <span class="go">Открыть банк →</span>
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ФОРМУЛА ==================== -->
+  <section class="sec sec-paper" id="formula" aria-labelledby="formula-h">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Ядро мастерской</p>
+        <h2 class="h2" id="formula-h">Формула<br>промпта</h2>
+        <p class="lede">Промпт = роль + тема по ФГОС + контекст + требования к заданию + формат вывода. Пять слагаемых — и запрос перестаёт быть лотереей.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="rv">
+          <p class="formula">
+            <span class="part">Роль</span><span class="op">+</span>
+            <span class="part">Тема ФГОС</span><span class="op">+</span>
+            <span class="part">Контекст</span><span class="op">+</span>
+            <span class="part">Требования</span><span class="op">+</span>
+            <span class="part">Формат</span>
+          </p>
+          <div class="blocks" style="margin-top:26px">
+            <article class="block">
+              <h3>Роль</h3>
+              <p>«Выступи в роли методиста по математике и опытного проверяющего».</p>
+            </article>
+            <article class="block">
+              <h3>Тема по ФГОС</h3>
+              <p>Конкретный элемент содержания: <code>проценты</code>, <code>причастный оборот</code>, <code>Present Simple</code>.</p>
+            </article>
+            <article class="block">
+              <h3>Контекст</h3>
+              <p>Материал, который вы знаете и можете проверить: краеведение, история, литература, школьный быт.</p>
+            </article>
+            <article class="block">
+              <h3>Требования к заданию</h3>
+              <p>Класс, уровень, объём, что ученик должен сделать сам, а где даны опоры.</p>
+            </article>
+            <article class="block">
+              <h3>Формат вывода</h3>
+              <p>Условие, эталонный ответ, критерии проверки или тест с ключом.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="rv">
+          <figure class="note-card">
+            <p class="script">Плохой промпт — это «составь задание по моему предмету». Хороший — пять блоков, из которых ни один нельзя вычеркнуть.</p>
+            <figcaption>Записка с полей мастерской</figcaption>
+          </figure>
+
+          <div class="table-wrap" style="margin-top:26px">
+            <table>
+              <thead>
+                <tr><th>Что просим</th><th>Плохо</th><th>Хорошо</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Сюжет</td>
+                  <td class="bad">«задание про Арктику»</td>
+                  <td class="good">«текст о северном сиянии на 90 слов — для темы "причастный оборот"»</td>
+                </tr>
+                <tr>
+                  <td>Проверка</td>
+                  <td class="bad">«дай ответ»</td>
+                  <td class="good">«условие, эталонный ответ, три критерия оценивания»</td>
+                </tr>
+                <tr>
+                  <td>Уровень</td>
+                  <td class="bad">«посложнее»</td>
+                  <td class="good">«8 класс, базовый уровень: по образцу, с опорными словами»</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="panel-row" style="margin-top:24px">
+            <a class="btn" href="workshop.html">Шаблоны промптов</a>
+            <a class="btn btn-ghost" href="simulator.html">Собрать свой промпт</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== МАНИФЕСТ ==================== -->
+  <section class="sec" aria-labelledby="manifest-h">
+    <div class="wrap narrow" style="text-align:center">
+      <p class="eyebrow rv" id="manifest-h">Манифест мастер-класса</p>
+      <blockquote class="h2 hand rv" style="font-family:var(--hand);font-size:clamp(30px,4.4vw,54px);line-height:1.18;margin:18px auto 0;max-width:22ch">
+        Нейросеть пишет черновик. Педагогику оставляем себе.
+      </blockquote>
+      <p class="small rv" style="margin-top:22px">А. Р. Миннегалеев — учитель информатики, автор мастер-класса</p>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section class="sec sec-paper" id="faq" aria-labelledby="faq-h">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Вопросы</p>
+        <h2 class="h2" id="faq-h">Что обычно<br>спрашивают</h2>
+        <p class="lede">Коротко о том, что нужно принести, чем будем пользоваться и что останется после мастер-класса.</p>
+      </div>
+
+      <div class="faq rv">
+        <details>
+          <summary>Нужен ли ноутбук и что установить?<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M7 1v12M1 7h12"/></svg></summary>
+          <div class="answer">Достаточно телефона или школьного ноутбука: сайт работает в браузере, ничего не устанавливается. Для работы с GigaChat и Алисой AI нужна учётная запись — возьмите доступы, если есть.</div>
+        </details>
+        <details>
+          <summary>Я не информатик — мне это подойдёт?<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M7 1v12M1 7h12"/></svg></summary>
+          <div class="answer">Да, мастер-класс собран вокруг вашего предмета. Конструктор промпта, лаборатория проверки и копилка не требуют кода: программирование нужно только в необязательном блоке для учителей информатики.</div>
+        </details>
+        <details>
+          <summary>ИИ не выдумывает факты?<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M7 1v12M1 7h12"/></svg></summary>
+          <div class="answer">Выдумывает, и это часть разговора. Поэтому в формуле есть блок «контекст» с проверяемыми фактами, а третья станция целиком посвящена проверке: любое задание от модели сверяется с источником и с программой до того, как попадёт к ученику.</div>
+        </details>
+        <details>
+          <summary>Что останется после мастер-класса?<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M7 1v12M1 7h12"/></svg></summary>
+          <div class="answer">Этот сайт — он и есть раздатка: гайд с шаблонами, тренажёр, лаборатория проверки и копилка заданий. Ссылка остаётся у участников, задания из копилки сохраняются в браузере и собираются в общую базу.</div>
+        </details>
+        <details>
+          <summary>Можно взять материалы для своей кафедры?<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M7 1v12M1 7h12"/></svg></summary>
+          <div class="answer">Да, материалы можно использовать свободно в образовательных целях. Единственное условие — проверять исторические и научные справки по источникам, а не доверять ответу модели на слово.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html"><b>напарник</b></a>
+        <p class="foot-script">Нейросеть пишет черновик — учитель ставит педагогику.</p>
+      </div>
+      <div>
+        <h4>Модули</h4>
+        <ul>
+          <li><a href="workshop.html">Мастерская промпта</a></li>
+          <li><a href="simulator.html">Тренажёр и песочница</a></li>
+          <li><a href="debug-lab.html">Лаборатория проверки</a></li>
+          <li><a href="bank-tasks.html">Копилка заданий</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Мастер-класс</h4>
+        <ul>
+          <li><a href="#program">Программа</a></li>
+          <li><a href="#formula">Формула промпта</a></li>
+          <li><a href="#faq">Вопросы</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>Мастер-класс для учителей школы · нейросеть как напарник</span>
+      <span>Дизайн-язык: шаблон «Handwritten Notes Landing Page» с 21st.dev</span>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+  import { writeScene, initPage, placeMatrix } from "./assets/hand.js?v=18";
+
+  initPage();
+
+  const k = 0.82;
+  const geo = {
+    bx: 430, by: -230, l1: 240, l2: 260, bend: -1,
+    m: placeMatrix(150, 230, -6),
+    park: [372, -46],
+    pen: 44, penAngle: -62,
+    tube: "M430 -230C430 -270 450 -290 470 -320",
+    housing: -90, k,
+  };
+
+  const paper = `
+    <g>
+      <path d="M0 0L180 -116L360 0Z" fill="#f4f2ec" stroke="rgba(0,0,0,.16)" stroke-width="1"/>
+      <rect width="360" height="240" fill="#ecebe5"/>
+    </g>
+    <rect x="24" y="-172" width="312" height="292" fill="#ffffff" stroke="rgba(0,0,0,.08)"/>
+    <rect x="33" y="-163" width="294" height="274" fill="none" stroke="#1f2b5c" stroke-width="2.4"/>
+    <text x="180" y="-134" text-anchor="middle" style="font-family:var(--serif);font-size:12px;letter-spacing:.24em;fill:#1f2b5c">ДЛЯ УЧИТЕЛЕЙ ШКОЛЫ</text>
+    <path d="M306 -152h12M312 -158v12" stroke="#e05a3c" stroke-width="2" stroke-linecap="round" fill="none"/>
+    <path d="M60 -150c6-4 12 4 18 0s12 4 18 0" stroke="rgba(28,28,30,.35)" stroke-width="1.1" fill="none"/>
+    <g transform="translate(0 60)">
+      <path d="M0 0L180 96L360 0V180H0Z" fill="#ffffff" stroke="rgba(0,0,0,.12)" stroke-width="1"/>
+      <path d="M0 180L150 78M360 180L210 78" fill="none" stroke="rgba(0,0,0,.08)" stroke-width="1.2"/>
+      <text x="180" y="152" text-anchor="middle" style="font-family:var(--sans);font-size:10px;letter-spacing:.18em;fill:rgba(28,28,30,.55)">40 МИНУТ · ВСЕ ПРЕДМЕТЫ</text>
+      <rect x="300" y="30" width="40" height="48" fill="#ffffff" stroke="rgba(0,0,0,.1)" stroke-dasharray="2 2"/>
+      <rect x="305" y="35" width="30" height="38" fill="#2a8e89"/>
+    </g>`;
+
+  writeScene({
+    svg: document.getElementById("hero-stage"),
+    geo,
+    paper,
+    paras: [
+      { text: "Коллеги!" },
+      { text: "Один промпт — и задание готово." },
+      { text: "по любому предмету", align: "right" },
+    ],
+    size: 22,
+    box: { x: 50, y: -104, width: 258, lead: 1.52 },
+    speed: 150,
+    ink: "#2340b0",
+    viewBox: "0 -215 780 570",
+  });
+</script>
+</body>
+</html>

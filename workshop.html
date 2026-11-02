@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Мастерская промпта — нейросеть как напарник</title>
+<meta name="description" content="Формула промпта из пяти блоков, готовые шаблоны для любого предмета, чек-лист перед отправкой и таблица «плохо / хорошо».">
+<link rel="stylesheet" href="assets/inf.css?v=18">
+<script>
+  try {
+    var t = localStorage.getItem('inf-theme');
+    document.documentElement.setAttribute('data-theme', t ? t : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+  } catch (e) {}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">К содержанию</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><b>напарник</b><span>мастер-класс · 40 минут</span></a>
+    <nav class="nav-links" aria-label="Разделы">
+      <a href="index.html#program">Программа</a>
+      <a href="index.html#modules">Модули</a>
+      <a href="workshop.html" aria-current="page">Формула</a>
+      <a href="index.html#faq">Вопросы</a>
+    </nav>
+    <div class="nav-end">
+      <button class="theme-btn" data-theme-toggle aria-pressed="false" aria-label="Тёмная тема">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M2.4 12h2.2M19.4 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+      </button>
+      <button class="burger" data-menu-toggle aria-expanded="false" aria-label="Меню">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" data-menu>
+  <a href="index.html#program">Программа <span>40 минут</span></a>
+  <a href="workshop.html">Мастерская <span>гайд</span></a>
+  <a href="simulator.html">Тренажёр <span>конструктор</span></a>
+  <a href="debug-lab.html">Проверка <span>разбор</span></a>
+  <a href="bank-tasks.html">Копилка заданий <span>по предметам</span></a>
+</div>
+
+<main id="main">
+
+  <header class="page-head">
+    <svg class="scribble ln-line-art" viewBox="0 0 300 160" aria-hidden="true">
+      <path class="dash" d="M20 120C70 96 120 118 160 78S250 40 288 52"/>
+      <path d="M232 34l56 18-44 26" fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="wrap">
+      <p class="crumb"><a href="index.html">Мастер-класс</a> · станция 1 · 0–10 мин</p>
+      <h1 class="h1">Мастерская промпта</h1>
+      <p class="lede">Готовая конструкция запроса для задания по любому предмету. Пять блоков — ни одного лишнего, и ни один нельзя вычеркнуть.</p>
+    </div>
+  </header>
+
+  <!-- формула -->
+  <section class="sec" id="formula" aria-labelledby="f-h">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Основа</p>
+        <h2 class="h2" id="f-h">Формула<br>промпта</h2>
+        <p class="lede"><strong class="lede-formula">Промпт = роль + тема по ФГОС + контекст + требования к заданию + формат вывода.</strong></p>
+      </div>
+
+      <div class="blocks">
+        <article class="block rv">
+          <h3>Роль</h3>
+          <p>Кем должен быть ИИ. Без роли он отвечает как справочник, а не как методист.</p>
+          <p class="mono" id="b1">Выступи в роли методиста по русскому языку и опытного проверяющего работ семиклассников.</p>
+          <div class="panel-row"><button class="btn btn-ghost btn-sm" data-copy="#b1">Скопировать блок</button></div>
+        </article>
+
+        <article class="block rv">
+          <h3>Тема по ФГОС</h3>
+          <p>Конкретный элемент содержания — не «русский язык», а «причастный оборот и его обособление».</p>
+          <p class="mono" id="b2">Предмет и тема: русский язык, 7 класс — причастный оборот, обособление запятыми (ФГОС).</p>
+          <div class="panel-row"><button class="btn btn-ghost btn-sm" data-copy="#b2">Скопировать блок</button></div>
+        </article>
+
+        <article class="block rv">
+          <h3>Контекст</h3>
+          <p>Материал, который вы знаете и можете проверить: краеведение (например, Ямал и Север), история, литература, школьный быт.</p>
+          <p class="mono" id="b3">Контекст: описание северного сияния над посёлком. Дай 2–3 предложения проверяемых природных фактов — высота, цвета, время наблюдения.</p>
+          <div class="panel-row"><button class="btn btn-ghost btn-sm" data-copy="#b3">Скопировать блок</button></div>
+        </article>
+
+        <article class="block rv">
+          <h3>Требования к заданию</h3>
+          <p>Рамки: класс, уровень, объём, что ученик делает сам, а где даны опоры.</p>
+          <p class="mono" id="b4">Задание: текст 90–110 слов, 6 причастных оборотов, из них 2 в середине предложения. Базовый уровень: без деепричастных оборотов и вводных слов. Текст даётся без знаков препинания — ученик расставляет их сам.</p>
+          <div class="panel-row"><button class="btn btn-ghost btn-sm" data-copy="#b4">Скопировать блок</button></div>
+        </article>
+
+        <article class="block rv">
+          <h3>Формат вывода</h3>
+          <p>Структура ответа. Без неё модель смешает условие, ответ и рассуждения в один абзац.</p>
+          <p class="mono" id="b5">Выведи строго по разделам: 1) задание для ученика; 2) эталонный ответ с разбором каждого оборота; 3) три критерия оценивания с баллами; 4) типичные ошибки и как их объяснить.</p>
+          <div class="panel-row"><button class="btn btn-ghost btn-sm" data-copy="#b5">Скопировать блок</button></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- полный промпт -->
+  <section class="sec sec-paper" aria-labelledby="fp-h">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Сборка</p>
+        <h2 class="h2" id="fp-h">Промпт целиком</h2>
+        <p class="lede">Пять блоков, склеенные в один запрос. Подставьте свой предмет, тему и контекст — остальное можно оставить как есть.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="rv">
+          <pre id="full-prompt">Выступи в роли методиста по русскому языку и опытного проверяющего работ семиклассников.
+
+ПРЕДМЕТ И ТЕМА ПО ФГОС: русский язык, 7 класс — причастный оборот, обособление запятыми.
+
+КОНТЕКСТ:
+Сюжет — описание северного сияния над посёлком.
+Дай 2–3 предложения проверяемых природных фактов: высота, цвета, время наблюдения.
+Стиль научно-популярный, доступный семикласснику.
+
+ТРЕБОВАНИЯ К ЗАДАНИЮ:
+— текст 90–110 слов, 6 причастных оборотов, из них 2 в середине предложения;
+— базовый уровень: без деепричастных оборотов и вводных слов;
+— текст даётся без знаков препинания, ученик расставляет их сам.
+
+ФОРМАТ ВЫВОДА (строго по разделам):
+1) задание для ученика (текст без запятых);
+2) эталонный ответ с разбором каждого оборота;
+3) три критерия оценивания с баллами;
+4) типичные ошибки и как их объяснить ученику.</pre>
+          <div class="panel-row" style="margin-top:14px">
+            <button class="btn" data-copy="#full-prompt">Скопировать промпт</button>
+            <a class="btn btn-ghost" href="simulator.html">Собрать под себя</a>
+          </div>
+        </div>
+
+        <div class="rv">
+          <figure class="note-card" style="margin-bottom:22px">
+            <p class="script">Плохой промпт — это «составь задание по моему предмету». Хороший — пять блоков, из которых ни один нельзя вычеркнуть.</p>
+            <figcaption>Записка с полей мастерской</figcaption>
+          </figure>
+
+          <div class="callout">
+            <b>Проверка — на учителе.</b> Модель уверенно называет даты, числа и термины, которых не было или которые устарели. Любую справку, формулировку правила или факт из ответа сверяйте с источником и программой до того, как это увидят ученики.
+          </div>
+
+          <div class="table-wrap" style="margin-top:18px">
+            <table>
+              <thead><tr><th>Что просим</th><th>Плохо</th><th>Хорошо</th></tr></thead>
+              <tbody>
+                <tr><td>Сюжет</td><td class="bad">«задание про Арктику»</td><td class="good">«описание северного сияния, 90 слов — под причастный оборот»</td></tr>
+                <tr><td>Проверка</td><td class="bad">«дай ответ»</td><td class="good">«эталонный разбор и три критерия с баллами»</td></tr>
+                <tr><td>Уровень</td><td class="bad">«посложнее»</td><td class="good">«7 класс, базовый: текст без знаков и с опорой»</td></tr>
+                <tr><td>Предмет</td><td class="bad">«по русскому»</td><td class="good">«русский язык, 7 класс, тема по ФГОС»</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- шаблоны -->
+  <section class="sec" aria-labelledby="tpl-h">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Заготовки</p>
+        <h2 class="h2" id="tpl-h">Два шаблона<br>на каждый день</h2>
+        <p class="lede">Первый — генератор задания по вашему предмету, второй — три уровня из одного и того же материала. Копируются в один клик.</p>
+      </div>
+
+      <div class="grid-2">
+        <article class="rv">
+          <h3 class="h3" style="margin-bottom:12px">Шаблон 1. Генератор задания по предмету</h3>
+          <pre id="t1">Выступи в роли методиста по [ПРЕДМЕТ] и опытного проверяющего.
+Составь задание для [КЛАСС] класса по теме [ТЕМА ПО ФГОС].
+Сюжет — [КОНТЕКСТ: краеведение / история / литература / школьный быт],
+с проверяемыми фактами и краткой справкой на 2–3 предложения.
+Дай: условие для ученика, эталонный ответ, критерии оценивания и типичные ошибки.</pre>
+          <div class="panel-row" style="margin-top:12px"><button class="btn btn-ghost btn-sm" data-copy="#t1">Скопировать шаблон</button></div>
+        </article>
+
+        <article class="rv">
+          <h3 class="h3" style="margin-bottom:12px">Шаблон 2. Три уровня из одного задания</h3>
+          <pre id="t2">Возьми предыдущее задание и сделай три версии:
+1. С опорами: план ответа, опорные слова, первое предложение-образец.
+2. Основной уровень: то же задание без подсказок.
+3. Продвинутый: добавь второй источник или исключение и вопрос на перенос.
+Для каждой версии укажи, что именно проверяется и сколько нужно времени.</pre>
+          <div class="panel-row" style="margin-top:12px"><button class="btn btn-ghost btn-sm" data-copy="#t2">Скопировать шаблон</button></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- чек-лист -->
+  <section class="sec sec-paper" aria-labelledby="cl-h">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Перед отправкой</p>
+        <h2 class="h2" id="cl-h">Шесть пунктов,<br>которые ловят провал</h2>
+        <p class="lede">Отметьте пункты — счётчик покажет, готов ли промпт к отправке в GigaChat или Алису AI.</p>
+      </div>
+
+      <div class="rv" style="max-width:760px">
+        <div class="check-list" id="checklist"></div>
+        <div class="progress" style="margin-top:16px"><i id="check-bar"></i></div>
+        <p class="small" style="margin-top:10px"><span id="check-count">0 из 6</span> — отмечено</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap page-foot-cta">
+      <a class="btn" href="simulator.html">Перейти к тренажёру</a>
+      <a class="btn btn-ghost" href="debug-lab.html">Лаборатория проверки</a>
+      <span class="small">Дальше по маршруту — станция 2: один сюжет, три уровня.</span>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html"><b>напарник</b></a>
+        <p class="foot-script">Нейросеть пишет черновик — учитель ставит педагогику.</p>
+      </div>
+      <div>
+        <h4>Модули</h4>
+        <ul>
+          <li><a href="workshop.html">Мастерская промпта</a></li>
+          <li><a href="simulator.html">Тренажёр и песочница</a></li>
+          <li><a href="debug-lab.html">Лаборатория проверки</a></li>
+          <li><a href="bank-tasks.html">Копилка заданий</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Мастер-класс</h4>
+        <ul>
+          <li><a href="index.html#program">Программа</a></li>
+          <li><a href="index.html#formula">Формула промпта</a></li>
+          <li><a href="index.html#faq">Вопросы</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>Мастер-класс для учителей школы · нейросеть как напарник</span>
+      <span>Дизайн-язык: шаблон «Handwritten Notes Landing Page» с 21st.dev</span>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+  import { initPage } from "./assets/hand.js?v=18";
+  initPage();
+
+  // чек-лист наставника
+  const CHECKS = [
+    "Промпт задаёт роль: «методист по предмету и проверяющий», а не «генератор заданий».",
+    "Указан предмет и тема по ФГОС — конкретный элемент содержания, а не «мой предмет вообще».",
+    "Есть контекст и требование давать проверяемые факты, а не общие слова.",
+    "Заданы рамки: класс, уровень, объём, что ученик делает сам.",
+    "Задан формат вывода: условие, эталонный ответ, критерии.",
+    "Есть пункт самопроверки: сверить факты и термины ответа с источником и программой."
+  ];
+  const list = document.getElementById("checklist");
+  const count = document.getElementById("check-count");
+  const bar = document.getElementById("check-bar");
+
+  function refresh() {
+    const boxes = list.querySelectorAll('input[type="checkbox"]');
+    const done = list.querySelectorAll('input[type="checkbox"]:checked').length;
+    count.textContent = done + " из " + boxes.length;
+    bar.style.width = Math.round((done / boxes.length) * 100) + "%";
+  }
+
+  CHECKS.forEach((text) => {
+    const label = document.createElement("label");
+    const cb = document.createElement("input");
+    cb.type = "checkbox";
+    cb.addEventListener("change", refresh);
+    const span = document.createElement("span");
+    span.textContent = text;
+    label.append(cb, span);
+    list.appendChild(label);
+  });
+  refresh();
+</script>
+</body>
+</html>

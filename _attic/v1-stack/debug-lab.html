@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Дебаг-лаборатория: ИИ как педагогический наставник — площадка МУМО</title>
+<meta name="description" content="Практикум: как научить нейросеть быть наставником, а не калькулятором — наводящие вопросы вместо готового ответа.">
+<meta name="theme-color" content="#070a16">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="./">
+      <span class="brand-mark">М</span>
+      <span class="brand-text"><b>МУМО · Информатика</b><span>Педагогическая сессия 2026</span></span>
+    </a>
+    <nav class="nav">
+      <a href="./">Площадка</a>
+      <a href="workshop.html">Руководство</a>
+      <a href="simulator.html">Тренажёр</a>
+      <a href="debug-lab.html">Дебаг-лаб</a>
+      <a href="bank-tasks.html">Копилка задач</a>
+    </nav>
+    <a class="header-cta" href="bank-tasks.html">Копилка задач</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap page-head">
+    <div class="crumb"><a href="./">Площадка</a> / дебаг-лаборатория</div>
+    <h1>Лаборатория: ИИ как педагогический наставник</h1>
+    <p class="lead">Главная цель — научить ИИ не выдавать готовый ответ, а наводить ученика на мысль
+      через педагогический диалог.</p>
+  </div>
+
+  <!-- РАЗБОР КОДА -->
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow reveal">Кейс</div>
+      <h2 class="reveal">«Сломанный» код ученика 8 класса</h2>
+      <p class="lead reveal">Задача: посчитать количество букв «Э» в историческом документе.
+        Нажмите на строку, чтобы увидеть разбор ошибки.</p>
+
+      <div class="split" style="margin-top:22px">
+        <div class="panel reveal" style="padding:18px">
+          <div class="output-head" style="border:0;padding:0 0 10px;background:transparent">
+            <span>student.py</span><span class="small muted">кликните на строку</span>
+          </div>
+          <pre class="code" id="broken-code" style="counter-reset:none;cursor:pointer"><span class="c"># Ошибка ученика: бесконечный цикл и выход за границы</span>
+<span class="k">text</span> = <span class="s">"Первая ЭВМ МЭСМ была создана в 1950 году"</span>
+<span class="k">i</span> = <span class="n">0</span>
+<span class="k">count</span> = <span class="n">0</span>
+
+<span class="k">while</span> <span class="k">i</span> &lt;= len(<span class="k">text</span>):
+    <span class="k">if</span> <span class="k">text</span>[<span class="k">i</span>] == <span class="s">"Э"</span>:
+        <span class="k">count</span> += <span class="n">1</span>
+    <span class="c"># Забыл добавить i += 1 !</span>
+
+print(<span class="s">"Количество букв Э:"</span>, <span class="k">count</span>)</pre>
+        </div>
+
+        <div class="stack-sm reveal">
+          <div class="panel" id="error-card" style="border-color:rgba(229,72,77,.35)">
+            <div class="panel-title"><h3>🔍 Разбор</h3></div>
+            <p class="small muted" id="err-text" style="margin:6px 0 0">Выберите строку с ошибкой в коде слева.</p>
+          </div>
+
+          <div class="panel">
+            <div class="panel-title"><h3>🤖 Запрос к ИИ: роль-плей «этичный наставник»</h3></div>
+            <p class="panel-note">Ключевая часть — запрет на готовый ответ.</p>
+            <pre class="code" id="roleplay" style="max-height:220px">Ты — доброжелательный и мудрый учитель информатики.
+Посмотри на код ученика выше. Ученик не понимает,
+почему программа зависает.
+
+НЕ ДАВАЙ ему готовый код и не называй ошибку напрямую.
+Сформулируй 2 наводящих вопроса, которые помогут ему
+самому заметить отсутствие изменения счётчика цикла 'i'.</pre>
+            <button class="btn btn-primary" data-copy-from="#roleplay">📋 Скопировать промпт</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout reveal" style="margin-top:18px">
+        <b>Педагогический эффект:</b> ученик, который сам нашёл ошибку, запоминает её причину.
+        Ученик, которому показали исправленный код, запоминает только факт подсказки.
+      </div>
+    </div>
+  </section>
+
+  <!-- ОЖИДАЕМЫЙ ОТВЕТ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow reveal">Эталон</div>
+      <h2 class="reveal">Как должен ответить ИИ-наставник</h2>
+      <div class="grid-cards" style="margin-top:20px">
+        <article class="card reveal">
+          <div class="card-icon">✅</div>
+          <h3>Признаёт успех</h3>
+          <p>«Ты отлично справился с условием проверки буквы» — сначала фиксируем то, что сделано верно.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card-icon">❓</div>
+          <h3>Вопрос 1 · состояние</h3>
+          <p>«Как изменяется значение переменной <code class="inline">i</code> при каждом шаге цикла?»</p>
+        </article>
+        <article class="card reveal">
+          <div class="card-icon">❓</div>
+          <h3>Вопрос 2 · следствие</h3>
+          <p>«Сможет ли <code class="inline">i</code> когда-нибудь стать больше длины текста, если оно не растёт?»</p>
+        </article>
+      </div>
+
+      <div class="panel reveal" style="margin-top:18px">
+        <div class="panel-title"><h3>🧠 Проверьте себя: какой ответ педагогически верный?</h3></div>
+        <p class="panel-note">Выберите вариант — сразу увидите разбор.</p>
+        <div id="quiz" class="stack-sm"></div>
+        <div id="quiz-result" class="callout" style="display:none;margin-top:14px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ЧЕК-ЛИСТ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow reveal">На заметку учителю</div>
+      <h2 class="reveal">Чек-лист «ИИ-наставник»</h2>
+      <p class="lead reveal">Отметьте пункты, которые соблюдает ваш промпт — это и есть критерии качества.</p>
+
+      <div class="panel reveal" style="margin-top:18px">
+        <div id="checklist" class="stack-sm"></div>
+        <div class="hr"></div>
+        <div class="flex">
+          <div class="small muted" id="check-count">0 из 6</div>
+          <div style="flex:1;height:6px;background:rgba(122,152,224,.16);border-radius:6px;overflow:hidden;min-width:120px">
+            <div id="check-bar" style="height:100%;width:0;background:var(--tricolor);transition:width .3s ease"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex reveal" style="margin-top:24px">
+        <a class="btn btn-primary" href="bank-tasks.html">Смотреть копилку задач →</a>
+        <a class="btn btn-ghost" href="simulator.html">Вернуться в тренажёр</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div>© 2026 МУМО учителей информатики · Осенняя межмуниципальная педагогическая сессия</div>
+    <div class="flex"><a href="./">На главную</a><a href="workshop.html">Руководство</a></div>
+  </div>
+</footer>
+
+<div class="toast" role="status" aria-live="polite"></div>
+<script src="assets/app.js"></script>
+<script src="assets/debug.js"></script>
+</body>
+</html>

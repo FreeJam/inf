@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Руководство по промпт-инжинирингу — площадка МУМО</title>
+<meta name="description" content="Формула контекстного промпта и готовые шаблоны запросов к GigaChat и YandexGPT для учителя информатики.">
+<meta name="theme-color" content="#070a16">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="./">
+      <span class="brand-mark">М</span>
+      <span class="brand-text"><b>МУМО · Информатика</b><span>Педагогическая сессия 2026</span></span>
+    </a>
+    <nav class="nav">
+      <a href="./">Площадка</a>
+      <a href="workshop.html">Руководство</a>
+      <a href="simulator.html">Тренажёр</a>
+      <a href="debug-lab.html">Дебаг-лаб</a>
+      <a href="bank-tasks.html">Копилка задач</a>
+    </nav>
+    <a class="header-cta" href="simulator.html">К тренажёру</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap page-head">
+    <div class="crumb"><a href="./">Площадка</a> / руководство</div>
+    <h1>Руководство по промпт-инжинирингу</h1>
+    <p class="lead">Готовая конструкция запроса для создания задач, соединяющих традиции, историю и программирование.</p>
+  </div>
+
+  <!-- ФОРМУЛА -->
+  <section class="section" id="formula">
+    <div class="wrap">
+      <div class="eyebrow reveal">Этап 01</div>
+      <h2 class="reveal">Формула «контекстного промпта»</h2>
+
+      <div class="formula reveal">
+        <div class="part">Промпт <span>=</span></div>
+        <span class="plus">+</span>
+        <div class="part">Роль <span>кто ты</span></div>
+        <span class="plus">+</span>
+        <div class="part">Тема по ФГОС <span>что тренируем</span></div>
+        <span class="plus">+</span>
+        <div class="part">Историко-культурный контекст <span>о чём сюжет</span></div>
+        <span class="plus">+</span>
+        <div class="part">Требования к коду <span>как писать</span></div>
+        <span class="plus">+</span>
+        <div class="part">Формат вывода <span>что получить</span></div>
+      </div>
+
+      <div class="split">
+        <div class="panel reveal">
+          <div class="panel-title"><h3>1 · Роль</h3></div>
+          <p class="panel-note">Нейросеть отвечает тем лучше, чем точнее задана позиция эксперта.</p>
+          <pre class="code" id="c-role"><span class="s">Выступи в роли методиста по информатике
+и эксперта по историческому просвещению.</span></pre>
+          <button class="btn btn-mini" data-copy-from="#c-role">📋 Скопировать</button>
+        </div>
+
+        <div class="panel reveal">
+          <div class="panel-title"><h3>2 · Тема по ФГОС</h3></div>
+          <p class="panel-note">Привязка к рабочей программе — иначе получим «задачу вообще».</p>
+          <pre class="code" id="c-theme"><span class="s">Тема: алгоритмы обработки массивов
+и поиск максимума на Python.</span></pre>
+          <button class="btn btn-mini" data-copy-from="#c-theme">📋 Скопировать</button>
+        </div>
+
+        <div class="panel reveal">
+          <div class="panel-title"><h3>3 · Контекст</h3></div>
+          <p class="panel-note">Историко-краеведческий сюжет — то, что делает задачу воспитательной.</p>
+          <pre class="code" id="c-ctx"><span class="s">Сюжет: статистика освоения Северного морского пути
+и подвиги ледокольного флота Ямала.</span></pre>
+          <button class="btn btn-mini" data-copy-from="#c-ctx">📋 Скопировать</button>
+        </div>
+
+        <div class="panel reveal">
+          <div class="panel-title"><h3>4 · Требования</h3></div>
+          <p class="panel-note">Комментарии на русском, понятные имена переменных, без «магии».</p>
+          <pre class="code" id="c-req"><span class="s">Код должен содержать комментарии на русском языке.
+Использовать понятные переменные. Без внешних библиотек.</span></pre>
+          <button class="btn btn-mini" data-copy-from="#c-req">📋 Скопировать</button>
+        </div>
+
+        <div class="panel reveal">
+          <div class="panel-title"><h3>5 · Формат</h3></div>
+          <p class="panel-note">Фиксируйте структуру ответа — так его не нужно переписывать.</p>
+          <pre class="code" id="c-fmt"><span class="s">Выведи: условие задачи, входные/выходные данные,
+эталонное решение, 3 тест-кейса.</span></pre>
+          <button class="btn btn-mini" data-copy-from="#c-fmt">📋 Скопировать</button>
+        </div>
+
+        <div class="panel reveal" style="border-color:rgba(229,72,77,.35)">
+          <div class="panel-title"><h3>⚠️ Чего избегать</h3></div>
+          <p class="panel-note">Типичные ошибки, из-за которых ответ приходится переделывать.</p>
+          <div class="callout bad" style="margin-bottom:10px"><b>«Придумай задачу по Python»</b> — нет темы, нет контекста, нет формата: получим случайный текст.</div>
+          <div class="callout bad"><b>«Сделай красиво»</b> — оценочное требование, нейросеть его не может проверить.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ШАБЛОНЫ -->
+  <section class="section" id="templates">
+    <div class="wrap">
+      <div class="eyebrow reveal">Готовые конструкции</div>
+      <h2 class="reveal">Шаблон 1 · Генератор краеведческих задач</h2>
+      <p class="lead reveal">Замените два поля в квадратных скобках — получите задачу под свой класс и тему.</p>
+
+      <div class="split" style="margin-top:20px">
+        <div class="panel reveal">
+          <div class="output-head" style="border:0;padding:0 0 10px;background:transparent">Текст промпта</div>
+          <pre class="code" id="tpl1" style="min-height:230px">Выступи в роли эксперта-методиста. Составь задачу по программированию
+на Python на тему <span class="ph">[УКАЖИТЕ ТЕМУ, например: Цикл WHILE]</span>.
+
+Сюжет задачи основывается на истории
+<span class="ph">[УКАЖИТЕ СОБЫТИЕ, например: маршруты экспедиции Ямал]</span>.
+
+Добавь в условие краткую историческую справку (2–3 предложения).
+Сгенерируй эталонное решение и 3 набора входных/выходных данных.
+Комментарии в коде — на русском языке.</pre>
+          <button class="btn btn-primary" data-copy-from="#tpl1">📋 Скопировать промпт</button>
+        </div>
+
+        <div class="panel reveal">
+          <div class="output-head" style="border:0;padding:0 0 10px;background:transparent">Шаблон 2 · Трехуровневая адаптация</div>
+          <pre class="code" id="tpl2" style="min-height:230px">Возьми предыдущую задачу и сформируй 3 уровня сложности:
+
+1. Базовый (fill-in-the-blank): ученик заполняет пропуски в коде.
+2. Профильный: ученик пишет код с нуля по условию.
+3. Олимпиадный: добавь ограничение по памяти, обработку
+   исключений (try-except) и нестандартные входные данные.
+
+Для каждого уровня укажи: цель по ФГОС, критерии оценивания,
+5 тест-кейсов (включая граничные).</pre>
+          <button class="btn btn-primary" data-copy-from="#tpl2">📋 Скопировать промпт</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ТАБЛИЦА -->
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow reveal">Практика</div>
+      <h2 class="reveal">Плохой и хороший промпт: разница</h2>
+      <div class="table-wrap reveal" style="margin-top:18px">
+        <table>
+          <thead>
+            <tr><th style="width:50%">Плохо</th><th>Хорошо</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="bad">«Дай задачу по циклам»</td>
+              <td class="good">«Тема: цикл while, 8 класс ФГОС. Сюжет: подсчёт дней работы полярной станции на Ямале. Нужны условие, решение, 3 теста.»</td>
+            </tr>
+            <tr>
+              <td class="bad">«Проверь код ученика»</td>
+              <td class="good">«Не называй ошибку прямо. Задай 2 наводящих вопроса, чтобы ученик сам увидел отсутствие i += 1.»</td>
+            </tr>
+            <tr>
+              <td class="bad">«Сделай тест по истории ЭВМ»</td>
+              <td class="good">«10 вопросов с 4 вариантами по машинам С. А. Лебедева (МЭСМ → БЭСМ-6), с ответами и пояснениями, уровень 9 класса.»</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout warn reveal" style="margin-top:20px">
+        <b>Правило площадки:</b> любой сгенерированный материал проходит педагогическую экспертизу.
+        Нейросеть предлагает — учитель проверяет факты, даты и корректность эталонного решения.
+      </div>
+
+      <div class="flex reveal" style="margin-top:26px">
+        <a class="btn btn-primary" href="simulator.html">Собрать промпт в тренажёре →</a>
+        <a class="btn btn-ghost" href="debug-lab.html">Перейти к дебаг-лаборатории</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div>© 2026 МУМО учителей информатики · Осенняя межмуниципальная педагогическая сессия</div>
+    <div class="flex"><a href="./">На главную</a><a href="simulator.html">Тренажёр</a></div>
+  </div>
+</footer>
+
+<div class="toast" role="status" aria-live="polite"></div>
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Лаборатория проверки — где ошибается нейросеть</title>
+<meta name="description" content="Разбор задания, которое написала нейросеть, по фрагментам: фактическая, терминологическая, методическая ошибка и несоразмерность. Промпты проверки и наставника.">
+<link rel="stylesheet" href="assets/inf.css?v=18">
+<script>
+  try {
+    var t = localStorage.getItem('inf-theme');
+    document.documentElement.setAttribute('data-theme', t ? t : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+  } catch (e) {}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">К содержанию</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><b>напарник</b><span>мастер-класс · 40 минут</span></a>
+    <nav class="nav-links" aria-label="Разделы">
+      <a href="index.html#program">Программа</a>
+      <a href="index.html#modules">Модули</a>
+      <a href="index.html#formula">Формула</a>
+      <a href="debug-lab.html" aria-current="page">Проверка</a>
+    </nav>
+    <div class="nav-end">
+      <button class="theme-btn" data-theme-toggle aria-pressed="false" aria-label="Тёмная тема">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M2.4 12h2.2M19.4 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+      </button>
+      <button class="burger" data-menu-toggle aria-expanded="false" aria-label="Меню">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" data-menu>
+  <a href="index.html#program">Программа <span>40 минут</span></a>
+  <a href="workshop.html">Мастерская <span>гайд</span></a>
+  <a href="simulator.html">Тренажёр <span>конструктор</span></a>
+  <a href="debug-lab.html">Проверка <span>разбор</span></a>
+  <a href="bank-tasks.html">Копилка заданий <span>по предметам</span></a>
+</div>
+
+<main id="main">
+
+  <header class="page-head">
+    <svg class="scribble ln-line-art" viewBox="0 0 300 160" aria-hidden="true">
+      <circle cx="150" cy="70" r="34" fill="none" stroke-width="2.2"/>
+      <path d="M174 94l28 28" stroke-width="6" stroke-linecap="round"/>
+      <path class="dash" d="M150 36v-18M116 70H96M204 70h20"/>
+    </svg>
+    <div class="wrap">
+      <p class="crumb"><a href="index.html">Мастер-класс</a> · станция 3 · 20–30 мин</p>
+      <h1 class="h1">Лаборатория проверки</h1>
+      <p class="lede">Нейросеть пишет уверенно и складно — и именно поэтому ошибается незаметно. Разбираем задание, которое она выдала, фрагмент за фрагментом, и учимся проверять до урока, а не на уроке.</p>
+    </div>
+  </header>
+
+  <!-- разбор задания -->
+  <section class="sec" aria-labelledby="code-h">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Шаг 1</p>
+        <h2 class="h2" id="code-h">Задание, которое написала нейросеть</h2>
+        <p class="lede">Запрос был короткий: «составь задание по природным зонам России для 8 класса». Вот что вернулось. Нажмите на любой фрагмент — появится разбор.</p>
+      </div>
+
+      <div class="tool rv">
+        <div>
+          <div class="code-lines">
+            <div class="no" id="code-numbers" aria-hidden="true"></div>
+            <div class="lines" id="code-lines"></div>
+          </div>
+          <p class="small" style="margin-top:10px">Четыре ошибки: <b>фактическая</b> (стр. 5), <b>терминологическая</b> (стр. 7), <b>неполные критерии</b> (стр. 13) и <b>несоразмерный формат</b> (стр. 14). Найдите их сами, прежде чем открывать разбор.</p>
+        </div>
+
+        <div class="panel">
+          <h3>Разбор</h3>
+          <div class="callout" id="analysis" data-tone="ok">
+            Нажмите на фрагмент слева — здесь появится объяснение: что верно, что неверно и как это исправить.
+          </div>
+          <div class="field" style="margin-top:18px">
+            <p class="lbl small" style="margin:0">Четыре типа ошибок, которые ловим всегда</p>
+            <p class="small" style="margin:0">Фактическая — даты, числа, названия, термины. Терминологическая — подмена понятия. Методическая — критерии, которые не покрывают задание. Несоразмерность — класс, время, объём.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- промпты -->
+  <section class="sec sec-paper" aria-labelledby="prompt-h">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Шаг 2</p>
+        <h2 class="h2" id="prompt-h">Два промпта: проверка и наставник</h2>
+        <p class="lede">Первый заставляет модель проверить собственную работу по чек-листу. Второй превращает её из решебника в наставника, который не выдаёт готовый ответ.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="rv">
+          <h3 class="h3" style="margin-bottom:12px">Промпт 1. Проверь себя</h3>
+          <pre id="check-prompt">Ты — методист по географии и опытный эксперт-проверяющий.
+Проверь задание, которое ты только что составил, по чек-листу:
+1) факты: даты, числа, названия, термины;
+2) соответствие классу и программе;
+3) полнота критериев оценивания;
+4) выполнимость за указанное время.
+
+По каждой ошибке напиши: где именно, почему это ошибка, исправленный вариант.
+Сначала список ошибок — и только потом исправленное задание.
+Если ошибок нет, перечисли, что именно проверял.</pre>
+          <div class="panel-row" style="margin-top:14px">
+            <button class="btn" data-copy="#check-prompt">Скопировать промпт</button>
+            <a class="btn btn-ghost" href="simulator.html">Собрать в тренажёре</a>
+          </div>
+
+          <div class="callout" style="margin-top:20px">
+            <b>Самопроверка не отменяет вашу.</b> Модель находит часть своих промахов, но не все: если она «уверена» в факте, то и в проверке подтвердит его. Последнее слово — за программой и учебником.
+          </div>
+        </div>
+
+        <div class="rv">
+          <h3 class="h3" style="margin-bottom:12px">Промпт 2. Наставник, а не решебник</h3>
+          <pre id="tutor-prompt">Ты — доброжелательный учитель географии.
+Ученик 8 класса спрашивает: «Почему в тундре не растут деревья?»
+
+НЕ давай готовый ответ и не пересказывай параграф.
+Опирайся на то, что ученик уже знает: климат, осадки, многолетнюю мерзлоту.
+Задай два наводящих вопроса — после каждого жди ответа ученика.
+В конце попроси его сформулировать вывод своими словами.</pre>
+          <div class="panel-row" style="margin-top:14px">
+            <button class="btn btn-ghost btn-sm" data-copy="#tutor-prompt">Скопировать промпт</button>
+          </div>
+
+          <figure class="note-card" style="margin-top:20px">
+            <p class="script">«Ты уже знаешь про климат тундры. Сравни осадки и испаряемость в тундре и в тайге — чего растениям не хватает сильнее?»</p>
+            <figcaption>Ожидаемый ответ ИИ — вопрос вместо готового вывода</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- мини-тест -->
+  <section class="sec" aria-labelledby="quiz-h">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Шаг 3</p>
+        <h2 class="h2" id="quiz-h">Мини-тест:<br>какой ответ наставника лучший</h2>
+        <p class="lede">Ученик задал один и тот же вопрос, а нейросеть ответила тремя способами. Выберите тот, который действительно учит.</p>
+      </div>
+
+      <div class="rv" style="max-width:820px;display:grid;gap:12px">
+        <div id="quiz" style="display:grid;gap:12px"></div>
+        <div class="callout" id="quiz-result" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-paper">
+    <div class="wrap page-foot-cta">
+      <a class="btn" href="bank-tasks.html">Дальше: копилка заданий</a>
+      <a class="btn btn-ghost" href="index.html#program">Вернуться к программе</a>
+      <span class="small">Станция 4 — собираем задания по всем предметам в общую копилку.</span>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html"><b>напарник</b></a>
+        <p class="foot-script">Нейросеть пишет черновик — учитель ставит педагогику.</p>
+      </div>
+      <div>
+        <h4>Модули</h4>
+        <ul>
+          <li><a href="workshop.html">Мастерская промпта</a></li>
+          <li><a href="simulator.html">Тренажёр и песочница</a></li>
+          <li><a href="debug-lab.html">Лаборатория проверки</a></li>
+          <li><a href="bank-tasks.html">Копилка заданий</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Мастер-класс</h4>
+        <ul>
+          <li><a href="index.html#program">Программа</a></li>
+          <li><a href="index.html#formula">Формула промпта</a></li>
+          <li><a href="index.html#faq">Вопросы</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>Мастер-класс для учителей школы · нейросеть как напарник</span>
+      <span>Дизайн-язык: шаблон «Handwritten Notes Landing Page» с 21st.dev</span>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+  import { initPage } from "./assets/hand.js?v=18";
+  import "./assets/debug.js?v=18";
+  initPage();
+</script>
+</body>
+</html>

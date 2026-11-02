@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Тренажёр-конструктор промптов и песочница Python — площадка МУМО</title>
+<meta name="description" content="Интерактивный конструктор промптов для учителя информатики и онлайн-песочница Python для проверки сгенерированных задач.">
+<meta name="theme-color" content="#070a16">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="./">
+      <span class="brand-mark">М</span>
+      <span class="brand-text"><b>МУМО · Информатика</b><span>Педагогическая сессия 2026</span></span>
+    </a>
+    <nav class="nav">
+      <a href="./">Площадка</a>
+      <a href="workshop.html">Руководство</a>
+      <a href="simulator.html">Тренажёр</a>
+      <a href="debug-lab.html">Дебаг-лаб</a>
+      <a href="bank-tasks.html">Копилка задач</a>
+    </nav>
+    <a class="header-cta" href="bank-tasks.html">Копилка задач</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap page-head">
+    <div class="crumb"><a href="./">Площадка</a> / тренажёр</div>
+    <h1>Виртуальный тренажёр: ИИ-конструктор задач</h1>
+    <p class="lead">Отработка навыка постановки задачи: соберите промпт из четырёх параметров,
+      а затем проверьте код, который вернёт нейросеть, прямо в браузере.</p>
+  </div>
+
+  <!-- КОНСТРУКТОР -->
+  <section class="section" id="builder">
+    <div class="wrap split" style="grid-template-columns: 0.9fr 1.1fr">
+      <div class="panel reveal">
+        <div class="panel-title"><h3>🎛️ Шаг 1 · Параметры задания</h3></div>
+        <p class="panel-note">Каждый параметр — часть формулы промпта. Меняйте и сравнивайте результат.</p>
+
+        <div class="field">
+          <label for="lang">1. Язык программирования</label>
+          <select id="lang">
+            <option value="Python 3">Python 3</option>
+            <option value="C++">C++</option>
+            <option value="Паскаль (FreePascal)">Паскаль (FreePascal)</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="topic">2. Тема из курса информатики</label>
+          <select id="topic">
+            <option value="Циклы и условия (while/for)">Циклы и условия (while/for)</option>
+            <option value="Обработка символьных строк">Обработка символьных строк</option>
+            <option value="Двумерные массивы / матрицы">Двумерные массивы / матрицы</option>
+            <option value="Словари и списки">Словари и списки</option>
+            <option value="Алгоритмы сортировки и поиска">Сортировка и поиск</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="context">3. Историко-патриотический контекст</label>
+          <select id="context">
+            <option value="yamal">Освоение Ямала и Северного морского пути</option>
+            <option value="leb">Первые советские ЭВМ (МЭСМ, БЭСМ С. А. Лебедева)</option>
+            <option value="geo">Географические открытия и экспедиции России</option>
+            <option value="culture">Культурное наследие и ремёсла народов Севера</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>4. Уровень сложности</label>
+          <div class="chips" id="levels" role="group" aria-label="Уровень сложности">
+            <button type="button" class="chip" data-level="basic" aria-pressed="false">Базовый</button>
+            <button type="button" class="chip" data-level="profile" aria-pressed="true">Профильный</button>
+            <button type="button" class="chip" data-level="olympiad" aria-pressed="false">Олимпиадный</button>
+          </div>
+          <div class="hint" id="level-hint">Профильный: ученик пишет код с нуля по условию.</div>
+        </div>
+
+        <div class="flex" style="margin-top:20px">
+          <button class="btn btn-primary" id="gen">🚀 Сгенерировать промпт</button>
+          <button class="btn btn-ghost" id="reset">Сбросить</button>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="output-box">
+          <div class="output-head">
+            <span>Готовый запрос для GigaChat / YandexGPT</span>
+            <span class="small muted" id="out-meta">—</span>
+          </div>
+          <pre class="code-out" id="output">// Нажмите «Сгенерировать промпт», чтобы собрать запрос
+// из выбранных параметров.</pre>
+        </div>
+        <div class="output-actions">
+          <button class="btn btn-primary" data-copy-from="#output">📋 Скопировать промпт</button>
+          <a class="btn btn-ghost" href="https://gigachat.dev" target="_blank" rel="noopener">Открыть GigaChat ↗</a>
+          <a class="btn btn-ghost" href="https://ya.ru/alice" target="_blank" rel="noopener">YandexGPT ↗</a>
+        </div>
+        <div class="callout" style="margin-top:16px">
+          <b>Проверка результата:</b> вставьте ответ нейросети в песочницу ниже. Эталонное решение,
+          которое не проходит собственные тесты, — плохая задача. Так вы ловите «галлюцинации» до урока.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПЕСОЧНИЦА -->
+  <section class="section" id="sandbox">
+    <div class="wrap">
+      <div class="eyebrow reveal">Шаг 2 · Проверка кода</div>
+      <h2 class="reveal">Онлайн-песочница Python</h2>
+      <p class="lead reveal">Код исполняется локально в браузере (Pyodide, WebAssembly) — ничего не уходит на сервер.
+        Первый запуск подгружает окружение (~10 МБ), дальше работает мгновенно.</p>
+
+      <div class="split" style="margin-top:22px">
+        <div class="panel reveal">
+          <div class="panel-title"><h3>Код задачи</h3></div>
+          <p class="panel-note">Пример: поиск минимума в массиве температур по станциям Ямала.</p>
+<textarea id="code" spellcheck="false" style="min-height:280px;font-family:var(--font-mono);font-size:13.4px"># Задание: расчёт провизии для арктической экспедиции
+# Данные о температуре на станциях Ямала
+temperatures = [-28, -32, -35, -20, -15, -40, -38]
+
+# Поиск самого холодного дня
+min_temp = temperatures[0]
+for t in temperatures:
+    if t < min_temp:
+        min_temp = t
+
+print(f"Минимальная температура за экспедицию: {min_temp}°C")
+print(f"Станций в наборе: {len(temperatures)}")</textarea>
+          <div class="flex" style="margin-top:14px">
+            <button class="btn btn-primary" id="run">▶ Запустить код</button>
+            <button class="btn btn-ghost" id="clear">Очистить консоль</button>
+          </div>
+          <p class="small muted" style="margin:12px 0 0">Функция <code class="inline">input()</code> в браузерной песочнице не поддерживается —
+            задавайте данные прямо в коде или через <code class="inline">sys.stdin</code>.</p>
+        </div>
+
+        <div class="reveal">
+          <div class="console">
+            <div class="console-bar">
+              <span class="dot" style="background:#e5484d"></span>
+              <span class="dot" style="background:#e9c46a"></span>
+              <span class="dot" style="background:#35c48a"></span>
+              <span style="margin-left:8px" id="console-state">консоль · ожидание</span>
+            </div>
+            <div class="console-body" id="console"><span class="dim">[SYSTEM] Готово к запуску. Нажмите «Запустить код».</span></div>
+          </div>
+
+          <div class="panel" style="margin-top:16px">
+            <div class="panel-title"><h3>Что проверять в сгенерированной задаче</h3></div>
+            <ul class="small" style="margin:8px 0 0;padding-left:18px;color:var(--muted);line-height:1.9">
+              <li>Решение проходит собственные тест-кейсы автора.</li>
+              <li>Граничные случаи: пустой массив, один элемент, отрицательные значения.</li>
+              <li>Историческая справка не содержит выдуманных дат и фамилий.</li>
+              <li>Условие однозначно: нет «примерно», «около», «примерно столько».</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div>© 2026 МУМО учителей информатики · Осенняя межмуниципальная педагогическая сессия</div>
+    <div class="flex"><a href="./">На главную</a><a href="workshop.html">Руководство</a><a href="debug-lab.html">Дебаг-лаб</a></div>
+  </div>
+</footer>
+
+<div class="toast" role="status" aria-live="polite"></div>
+<script src="assets/app.js"></script>
+<script src="assets/simulator.js"></script>
+</body>
+</html>

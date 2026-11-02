@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Копилка задач «Информатика &amp; Идентичность» — площадка МУМО</title>
+<meta name="description" content="Методический банк краеведческих и патриотических задач по программированию МУМО учителей информатики с эталонными решениями.">
+<meta name="theme-color" content="#070a16">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="./">
+      <span class="brand-mark">М</span>
+      <span class="brand-text"><b>МУМО · Информатика</b><span>Педагогическая сессия 2026</span></span>
+    </a>
+    <nav class="nav">
+      <a href="./">Площадка</a>
+      <a href="workshop.html">Руководство</a>
+      <a href="simulator.html">Тренажёр</a>
+      <a href="debug-lab.html">Дебаг-лаб</a>
+      <a href="bank-tasks.html">Копилка задач</a>
+    </nav>
+    <a class="header-cta" href="simulator.html">Собрать свою задачу</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap page-head">
+    <div class="crumb"><a href="./">Площадка</a> / копилка задач</div>
+    <h1>Методический банк задач «Информатика &amp; Идентичность»</h1>
+    <p class="lead">Готовые задачи, разработанные учителями МУМО учителей информатики на сессии 28 октября 2026 г.
+      Каждая — с эталонным решением, тестами и привязкой к ФГОС.</p>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="filters reveal">
+        <div class="chips" role="group" aria-label="Фильтр по классу">
+          <button type="button" class="chip" data-grade="all" aria-pressed="true">Все классы</button>
+          <button type="button" class="chip" data-grade="7-8" aria-pressed="false">7–8</button>
+          <button type="button" class="chip" data-grade="9" aria-pressed="false">9</button>
+          <button type="button" class="chip" data-grade="10-11" aria-pressed="false">10–11</button>
+        </div>
+        <div style="min-width:230px">
+          <select id="topic-filter" aria-label="Фильтр по теме">
+            <option value="all">Все темы</option>
+          </select>
+        </div>
+        <div class="small muted" id="task-count" style="margin-left:auto"></div>
+      </div>
+
+      <div class="task-grid" id="task-grid"></div>
+
+      <div class="callout warn reveal" style="margin-top:22px">
+        <b>Внимание:</b> перед выдачей задачи классу проверьте историческую справку и эталонное решение.
+        Сгенерированный текст — черновик, ответственность за содержание несёт учитель.
+      </div>
+    </div>
+  </section>
+
+  <!-- ДОБАВИТЬ ЗАДАЧУ -->
+  <section class="section" id="add">
+    <div class="wrap">
+      <div class="eyebrow reveal">Общая копилка</div>
+      <h2 class="reveal">➕ Добавить свою задачу в банк МУМО</h2>
+      <p class="lead reveal">Задача сохраняется в вашем браузере (localStorage) — можно собрать подборку под свой класс
+        и вернуться к ней на уроке.</p>
+
+      <form class="panel reveal" id="add-form" style="margin-top:20px">
+        <div class="form-row">
+          <div class="field">
+            <label for="f-title">Название задачи</label>
+            <input type="text" id="f-title" placeholder="Например: «Порт Сабетта: подсчёт танкеров»">
+          </div>
+          <div class="field">
+            <label for="f-topic">Тема по ФГОС</label>
+            <input type="text" id="f-topic" placeholder="Циклы и условия">
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-grade">Класс</label>
+          <select id="f-grade">
+            <option value="7-8">7–8 класс</option>
+            <option value="9">9 класс</option>
+            <option value="10-11">10–11 класс</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-cond">Условие</label>
+          <textarea id="f-cond" placeholder="Что нужно найти, какие входные данные, какой формат вывода…"></textarea>
+        </div>
+        <div class="field">
+          <label for="f-code">Эталонное решение (Python)</label>
+          <textarea id="f-code" spellcheck="false" placeholder="# Решение" style="font-family:var(--font-mono);font-size:13.4px"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">💾 Сохранить в копилку</button>
+      </form>
+
+      <div class="flex reveal" style="margin-top:24px">
+        <a class="btn btn-ghost" href="simulator.html">Сгенерировать задачу в тренажёре →</a>
+        <a class="btn btn-ghost" href="workshop.html">Шаблоны промптов</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div>© 2026 МУМО учителей информатики · Осенняя межмуниципальная педагогическая сессия</div>
+    <div class="flex"><a href="./">На главную</a><a href="debug-lab.html">Дебаг-лаб</a></div>
+  </div>
+</footer>
+
+<div class="toast" role="status" aria-live="polite"></div>
+<script src="assets/app.js"></script>
+<script src="assets/tasks.js"></script>
+</body>
+</html>

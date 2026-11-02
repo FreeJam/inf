@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Тренажёр: промпт по вашему предмету — нейросеть как напарник</title>
+<meta name="description" content="Конструктор промпта по любому предмету и классу, живая записка от руки и песочница Python для учителей информатики.">
+<link rel="stylesheet" href="assets/inf.css?v=18">
+<script>
+  try {
+    var t = localStorage.getItem('inf-theme');
+    document.documentElement.setAttribute('data-theme', t ? t : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+  } catch (e) {}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">К содержанию</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><b>напарник</b><span>мастер-класс · 40 минут</span></a>
+    <nav class="nav-links" aria-label="Разделы">
+      <a href="index.html#program">Программа</a>
+      <a href="index.html#modules">Модули</a>
+      <a href="workshop.html">Формула</a>
+      <a href="simulator.html" aria-current="page">Тренажёр</a>
+    </nav>
+    <div class="nav-end">
+      <button class="theme-btn" data-theme-toggle aria-pressed="false" aria-label="Тёмная тема">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M2.4 12h2.2M19.4 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+      </button>
+      <button class="burger" data-menu-toggle aria-expanded="false" aria-label="Меню">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" data-menu>
+  <a href="index.html#program">Программа <span>40 минут</span></a>
+  <a href="workshop.html">Мастерская <span>гайд</span></a>
+  <a href="simulator.html">Тренажёр <span>конструктор</span></a>
+  <a href="debug-lab.html">Проверка <span>разбор</span></a>
+  <a href="bank-tasks.html">Копилка заданий <span>по предметам</span></a>
+</div>
+
+<main id="main">
+
+  <header class="page-head">
+    <svg class="scribble ln-line-art" viewBox="0 0 300 160" aria-hidden="true">
+      <path class="dash" d="M14 132C64 118 96 74 150 78S244 44 286 30"/>
+      <circle cx="238" cy="112" r="17" fill="none" stroke="var(--accent)" stroke-width="2.2"/>
+      <path d="M228 112h20M238 102v20" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"/>
+    </svg>
+    <div class="wrap">
+      <p class="crumb"><a href="index.html">Мастер-класс</a> · станция 2 · 10–20 мин</p>
+      <h1 class="h1">Тренажёр: промпт по вашему предмету</h1>
+      <p class="lede">Выберите предмет, класс, тему и контекст — на выходе готовый запрос, который можно вставить в GigaChat или Алису AI. Песочница Python спрятана в конце: она для учителей информатики.</p>
+    </div>
+  </header>
+
+  <!-- конструктор -->
+  <section class="sec" id="builder" aria-labelledby="b-h">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Шаг 1 · конструктор</p>
+        <h2 class="h2" id="b-h">Конструктор промпта</h2>
+        <p class="lede">Пять параметров — предмет, класс, тема по ФГОС, контекст и уровень. На выходе запрос, в котором уже есть роль, рамки и формат ответа.</p>
+      </div>
+
+      <div class="tool rv">
+        <div class="panel">
+          <h3>Параметры задания</h3>
+          <div class="field">
+            <label for="subject">Предмет</label>
+            <select id="subject">
+              <option value="rus">Русский язык</option>
+              <option value="lit">Литература</option>
+              <option value="math" selected>Математика</option>
+              <option value="hist">История</option>
+              <option value="soc">Обществознание</option>
+              <option value="phys">Физика</option>
+              <option value="chem">Химия</option>
+              <option value="bio">Биология</option>
+              <option value="geo">География</option>
+              <option value="eng">Иностранный язык</option>
+              <option value="prim">Окружающий мир</option>
+              <option value="inf">Информатика</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="grade">Класс</label>
+            <select id="grade">
+              <option value="1">1 класс</option>
+              <option value="2">2 класс</option>
+              <option value="3">3 класс</option>
+              <option value="4">4 класс</option>
+              <option value="5">5 класс</option>
+              <option value="6" selected>6 класс</option>
+              <option value="7">7 класс</option>
+              <option value="8">8 класс</option>
+              <option value="9">9 класс</option>
+              <option value="10">10 класс</option>
+              <option value="11">11 класс</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="topic">Тема по ФГОС</label>
+            <select id="topic">
+              <option value="Проценты и задачи на скидку">Проценты и задачи на скидку</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="context">Контекст задания</label>
+            <select id="context">
+              <option value="kraj" selected>Краеведение: природа и история региона</option>
+              <option value="rus">История и наука России</option>
+              <option value="lit">Литература и народная культура</option>
+              <option value="school">Школьная жизнь</option>
+              <option value="nature">Природа и экология</option>
+              <option value="life">Бытовые ситуации и расчёты</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Уровень</label>
+            <div class="chips" id="levels">
+              <button type="button" data-level="opora" aria-pressed="false">С опорами</button>
+              <button type="button" data-level="base" aria-pressed="true">Основной</button>
+              <button type="button" data-level="pro" aria-pressed="false">Продвинутый</button>
+            </div>
+            <p class="small" id="level-hint">Основной: ученик выполняет задание самостоятельно, без подсказок.</p>
+          </div>
+          <button class="btn" id="gen" type="button">Сгенерировать промпт</button>
+        </div>
+
+        <div class="panel">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap">
+            <h3 style="margin:0">Готовый запрос</h3>
+            <span class="counter" id="prompt-meta">—</span>
+          </div>
+          <textarea class="out mono" id="prompt-out" spellcheck="false" style="margin-top:14px;min-height:340px;white-space:pre-wrap;width:100%;border:1px solid var(--rule)"></textarea>
+          <div class="panel-row" style="margin-top:14px">
+            <button class="btn" data-copy="#prompt-out">Скопировать в буфер</button>
+          </div>
+          <div class="chat-row">
+            <span class="small">Вставить в нейросеть:</span>
+            <a class="btn btn-ghost btn-sm" href="https://giga.chat/" target="_blank" rel="noopener">GigaChat ↗</a>
+            <a class="btn btn-ghost btn-sm" href="https://alice.yandex.ru/" target="_blank" rel="noopener">Алиса AI ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- песочница: для информатики -->
+  <section class="sec" id="sandbox" aria-labelledby="s-h">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Шаг 2 · если вы преподаёте информатику</p>
+        <h2 class="h2" id="s-h">Песочница Python</h2>
+        <p class="lede">Необязательный блок: настоящий CPython на WebAssembly прямо в браузере, ничего не уходит на сервер. Покажем, что задание от нейросети можно проверить за десять секунд — но только там, где есть код.</p>
+      </div>
+
+      <div class="faq rv" style="border-top:0">
+        <details>
+          <summary>Показать песочницу и запустить пример<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M7 1v12M1 7h12"/></svg></summary>
+          <div class="answer" style="max-width:none;padding-bottom:6px">
+            <div class="tool" style="margin-top:8px">
+              <div class="panel">
+                <h3>Код задачи</h3>
+                <div class="code-wrap">
+                  <div class="code-hl-clip" aria-hidden="true">
+                    <pre class="code-hl" id="code-hl"></pre>
+                  </div>
+                  <textarea class="editor" id="code" spellcheck="false" wrap="off"># Задание: расчёт по данным наблюдений
+# Температура на метеостанции за неделю
+temperatures = [-28, -32, -35, -20, -15, -40, -38]
+
+# Самый холодный день
+min_temp = temperatures[0]
+for t in temperatures:
+    if t &lt; min_temp:
+        min_temp = t
+
+print(f"Минимальная температура за неделю: {min_temp}°C")
+
+# Допишите: средняя температура и число дней ниже -30</textarea>
+                </div>
+                <div class="panel-row" style="margin-top:14px">
+                  <button class="btn" id="run" type="button">Запустить код</button>
+                  <button class="btn btn-ghost btn-sm" id="clear" type="button">Очистить консоль</button>
+                  <span class="counter" id="console-state">консоль · ожидание</span>
+                </div>
+              </div>
+              <div class="panel">
+                <h3>Вывод</h3>
+                <div class="console" id="console"><span class="dim">[SYSTEM] Нажмите «Запустить код». Первый запуск загружает Pyodide (≈10 МБ) с CDN.</span></div>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- живая записка -->
+  <section class="sec sec-paper" id="note" aria-labelledby="n-h">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Шаг 3 · приятный бонус</p>
+        <h2 class="h2" id="n-h">Записка, которую пишут при вас</h2>
+        <p class="lede">Впишите свой текст — манипулятор перепишет его на карточку. Это та же идея, что и в промпте: формулировка превращается в артефакт.</p>
+      </div>
+
+      <div class="tool rv">
+        <div class="panel">
+          <h3>Текст записки</h3>
+          <div class="field">
+            <label for="note-text">Своими словами</label>
+            <textarea id="note-text" maxlength="220" style="min-height:130px">Задание по истории: что изменилось в жизни северного посёлка за двадцать лет.</textarea>
+          </div>
+          <p class="small">До 220 символов. Рука перепишет текст через секунду после того, как вы остановитесь.</p>
+          <div class="panel-row" style="margin-top:14px">
+            <button class="btn" id="note-again" type="button">Написать заново</button>
+            <span class="counter">Caveat · синие чернила</span>
+          </div>
+        </div>
+        <div>
+          <svg id="note-stage" role="img" aria-label="Манипулятор переписывает текст на карточку"></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-paper">
+    <div class="wrap page-foot-cta">
+      <a class="btn" href="debug-lab.html">Дальше: лаборатория проверки</a>
+      <a class="btn btn-ghost" href="index.html#program">Вернуться к программе</a>
+      <span class="small">Станция 3 — учимся находить ошибки в ответе нейросети.</span>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html"><b>напарник</b></a>
+        <p class="foot-script">Нейросеть пишет черновик — учитель ставит педагогику.</p>
+      </div>
+      <div>
+        <h4>Модули</h4>
+        <ul>
+          <li><a href="workshop.html">Мастерская промпта</a></li>
+          <li><a href="simulator.html">Тренажёр и песочница</a></li>
+          <li><a href="debug-lab.html">Лаборатория проверки</a></li>
+          <li><a href="bank-tasks.html">Копилка заданий</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Мастер-класс</h4>
+        <ul>
+          <li><a href="index.html#program">Программа</a></li>
+          <li><a href="index.html#formula">Формула промпта</a></li>
+          <li><a href="index.html#faq">Вопросы</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>Мастер-класс для учителей школы · нейросеть как напарник</span>
+      <span>Дизайн-язык: шаблон «Handwritten Notes Landing Page» с 21st.dev</span>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+  import { initPage } from "./assets/hand.js?v=18";
+  import "./assets/tool.js?v=18";
+  import { initHighlight } from "./assets/hl.js?v=18";
+  initPage();
+  initHighlight("code", "code-hl");
+
+  // песочница живёт в свёрнутом блоке: подсветку пересобираем при открытии
+  const box = document.getElementById("sandbox");
+  if (box) {
+    box.addEventListener("toggle", (e) => {
+      if (!e.target.open) return;
+      const ta = document.getElementById("code");
+      if (!ta) return;
+      ta.dispatchEvent(new Event("input"));
+    }, true);
+  }
+</script>
+</body>
+</html>
